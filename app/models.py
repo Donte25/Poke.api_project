@@ -42,4 +42,13 @@ class Pokemon(db.Model):
         db.session.add(self)
         db.session.commit()
 
+class Catch(db.Model):
+     id = db.Column(db.Integer, primary_key=True)
+     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+     catch_id = db.Column(db.Integer, db.ForeignKey('catch.id'), nullable=False)
+
+     def __init__(self, user_id, post_id):
+         self.user_id = user_id
+         self.catch_id = catch_id
+
 

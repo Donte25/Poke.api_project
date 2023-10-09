@@ -24,10 +24,8 @@ def get_pokemon(name):
         return output 
 
 @app.route("/")
-def index():
+def index_page():
     return render_template("index.html")
-
-    
     
 @app.route("/register", methods=["GET","POST"])
 def register_page():
@@ -74,7 +72,7 @@ def login_page():
 @app.route("/logout")
 def logout():
     logout_user()
-    return redirect(url_for('login_page'))
+    return redirect(url_for("index_page"))
     
 @app.route("/search", methods=["GET", "POST"])
 @login_required
@@ -86,5 +84,14 @@ def search_page():
             data = get_pokemon(pokesearch)
             return render_template('search.html', form = form, data = data)
     return render_template('search.html', form = form)
-            
-   
+
+@app.route('/')
+@app.route('/catch')
+def feed():
+    catch = catch.query.order_by(catch.date_created.desc()).all()
+    return render_template('catch.html', catch=catch)
+
+
+
+
+              

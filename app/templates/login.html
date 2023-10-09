@@ -5,8 +5,7 @@
 
 <h1>Login</h1>
 
-
-<form action="/login" method="POST">
+<form id="login-form" action="/login" method="POST">
 
     {{ form.hidden_tag() }}
 
@@ -15,5 +14,8 @@
 
     {{ form.submit() }}
 </form>
+<div>
+    <a href="/register" class="btn btn-primary" id="register_btn">Not already a trainer? Sign up</a>
+</div>
 
 {% endblock content %}

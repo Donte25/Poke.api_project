@@ -5,15 +5,17 @@
 
 <h1>Register</h1>
 
+<div id="register-form">
+    <form action="/register" method="POST">
 
-<form action="/register" method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.email() }}
+        {{ form.password() }}
+        {{ form.confirm_password() }}
 
-    {{ form.hidden_tag() }}
-    {{ form.email() }}
-    {{ form.password() }}
-    {{ form.confirm_password() }}
-
-    {{ form.submit() }}
-</form>
+        {{ form.submit() }}
+    </form>
+    <a href="/login" class="btn btn-primary" id="register_btn">Already a trainer? Log In</a>
+</div>
 
 {% endblock content %}
